@@ -3,8 +3,8 @@ import click
 import numpy as np
 
 from interpolation import __version__
-from interpolation.bilinear_interp import bilinear_interpolation
-from interpolation.bilinear_interp import visualize
+from interpolation.bilinear_interp import bilinear_interpolation, visualize
+
 
 @click.command()
 def blt():
@@ -20,6 +20,7 @@ def blt():
 
     click.echo(res(0, 0))
 
+
 @click.command()
 def graph():
     """
@@ -33,13 +34,15 @@ def graph():
     res = bilinear_interpolation(x_points, y_points, values)
     visualize(x_points, y_points, 1000, res)
 
+
 @click.group()
 @click.version_option(version=__version__)
 def cli():
     pass
 
+
 cli.add_command(blt)
 cli.add_command(graph)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()
