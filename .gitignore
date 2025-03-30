@@ -12,11 +12,15 @@ build/
 
 # Python cache files
 /src/interpolation/__pycache__/
+/src/tests/__pycache__
 
-#Ruff cache
+# Ruff cache
 .ruff_cache/
 
-#Images
+# Images
 *.jpeg
 *.png
 *.jpg
+
+# Coverage
+.coverage
