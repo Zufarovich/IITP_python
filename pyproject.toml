@@ -13,7 +13,8 @@ dependencies = [
     "click (>=8.1.8,<9.0.0)",
     "ruff (>=0.9.10,<0.10.0)",
     "opencv-python (>=4.11.0.86,<5.0.0.0)",
-    "pytest-cov (>=6.0.0,<7.0.0)"
+    "nox (>=2025.2.9,<2026.0.0)",
+    "nox-poetry (>=1.2.0,<2.0.0)"
 ]
 
 [tool.poetry.scripts]
@@ -21,6 +22,7 @@ interpolation = "interpolation.console:cli"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"
+pytest-cov = "^6.0.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
