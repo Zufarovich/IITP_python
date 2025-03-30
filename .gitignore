@@ -15,3 +15,8 @@ build/
 
 #Ruff cache
 .ruff_cache/
+
+#Images
+*.jpeg
+*.png
+*.jpg
