@@ -1,8 +1,8 @@
 from pathlib import Path
 
 import cv2
-import pytest
 import numpy as np
+import pytest
 
 from interpolation.image_process import process_interpolation
 
@@ -17,10 +17,22 @@ def start_test_interpolation(request):
     input_path = Path("./src/tests/lantern.jpeg")
     input = cv2.imread(input_path)
 
-    output = process_interpolation(input_path, Path("./src/tests/lantern_interpolated.jpeg")
-                                   , input.shape[1], input.shape[0])
-    scaled  = process_interpolation(input_path, Path("./src/tests/lantern_interpolated2.jpeg")
-                                   , int(input.shape[1]*1.5), int(input.shape[0]*1.5))
+    output = process_interpolation(
+        input_path,
+        Path(
+            "./src/tests/lantern_interpolated.jpeg",
+        ),
+        input.shape[1],
+        input.shape[0],
+    )
+    scaled = process_interpolation(
+        input_path,
+        Path(
+            "./src/tests/lantern_interpolated2.jpeg",
+        ),
+        int(input.shape[1] * 1.5),
+        int(input.shape[0] * 1.5),
+    )
     image = cv2.imread(output)
     img_scaled = cv2.imread(scaled)
 
@@ -38,6 +50,7 @@ def start_test_interpolation(request):
     del request.cls.src_size
     del request.cls.scaled
 
+
 @pytest.mark.usefixtures("start_test_interpolation")
 class TestOutput:
     def test_unchanged_size(self):
@@ -48,5 +61,5 @@ class TestOutput:
         assert self.img_path.exists()
 
     def test_scaled_output(self):
-        new_size = (int(self.src_size[0]*1.5), int(self.src_size[1]*1.5), 3)
+        new_size = (int(self.src_size[0] * 1.5), int(self.src_size[1] * 1.5), 3)
         assert self.scaled.shape == new_size
