@@ -27,28 +27,3 @@ def bilinear_interpolation(
         + values[..., 0, 1] * w_c
         + values[..., 1, 1] * w_d
     ) / denumerator
-
-
-def visualize(
-    x_points: np.array, y_points: np.array, num_points: int, values: np.array
-):
-    assert x_points.shape == (2,), "x_points must be an array of shape (2,)"
-    assert y_points.shape == (2,), "y_points must be an array of shape (2,)"
-    assert values.shape == (2, 2), "values must be convertible to 2x2 array"
-
-    x_grid = np.linspace(x_points[0], x_points[1], num_points)
-    y_grid = np.linspace(y_points[0], y_points[1], num_points)
-    grid_x, grid_y = np.meshgrid(x_grid, y_grid)
-
-    grid_z = bilinear_interpolation(
-        x_points=x_points, y_points=y_points, values=values, x=grid_x, y=grid_y
-    )
-
-    plt.figure(figsize=(8, 6))
-    cp = plt.contourf(grid_x, grid_y, grid_z, levels=20, cmap="viridis")
-    plt.colorbar(cp, label="Interpolated Value")
-    plt.title("Bilinear Interpolation")
-    plt.xlabel("X")
-    plt.ylabel("Y")
-    plt.grid(True)
-    plt.show()

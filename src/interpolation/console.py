@@ -10,19 +10,6 @@ from interpolation.image_process import process_interpolation
 
 
 @click.command()
-def graph():
-    """
-    This script builds a graph of interpolation
-    """
-
-    x_points = np.array((1, 2))
-    y_points = np.array((1, 2))
-    values = np.array([[5, 2], [-1, 4]])
-
-    visualize(x_points, y_points, 1000, values)
-
-
-@click.command()
 @click.argument("SOURCE")
 @click.argument("OUTPUT")
 @click.argument("WIDTH")
@@ -61,7 +48,6 @@ def cli():
     pass
 
 
-cli.add_command(graph)
 cli.add_command(image_interpolate)
 
 if __name__ == "__main__":
