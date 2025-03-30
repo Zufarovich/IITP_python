@@ -13,6 +13,7 @@ build/
 # Python cache files
 /src/interpolation/__pycache__/
 /src/tests/__pycache__
+__pycache__
 
 # Ruff cache
 .ruff_cache/
