@@ -71,8 +71,10 @@ def test_vectorized_operation():
 
 
 def test_zero_area():
-    with pytest.raises(AssertionError, match="x_points and y_points should contain different points"):
-        bilinear_interpolation(np.array([0,0]), np.array([0,1]), np.eye(2), 0.5, 0.5)
+    with pytest.raises(
+        AssertionError, match="x_points and y_points should contain different points"
+    ):
+        bilinear_interpolation(np.array([0, 0]), np.array([0, 1]), np.eye(2), 0.5, 0.5)
 
 
 def test_invalid_input_shapes():
