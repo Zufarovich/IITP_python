@@ -51,3 +51,5 @@ def process_interpolation(source: Path, output: Path, width: int, height: int):
         result[:, :, color] = np.clip(interpolated, 0, 255).astype(np.uint8)
 
     cv2.imwrite(output, result)
+
+    return output
