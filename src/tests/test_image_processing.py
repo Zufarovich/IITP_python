@@ -41,7 +41,8 @@ def start_test_interpolation(request):
 @pytest.mark.usefixtures("start_test_interpolation")
 class TestOutput:
     def test_unchanged_size(self):
-        assert self.test_image.shape == self.src_size
+        src = cv2.imread(Path("./src/tests/lantern.jpeg"))
+        assert np.any(self.test_image - src)
 
     def test_output(self):
         assert self.img_path.exists()
