@@ -5,7 +5,6 @@ import click
 import numpy as np
 
 from interpolation import __version__
-from interpolation.bilinear_interp import visualize
 from interpolation.image_process import process_interpolation
 
 
