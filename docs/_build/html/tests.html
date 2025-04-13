@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests package &mdash; Image interpolation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Command Line Interface (CLI)" href="cli.html" />
+    <link rel="prev" title="interpolation package" href="interpolation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Image interpolation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html">interpolation package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tests package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tests.test_bilinear_interpolation">tests.test_bilinear_interpolation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_bilinear_interpolation.interpolation_data"><code class="docutils literal notranslate"><span class="pre">interpolation_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_bilinear_interpolation.test_basic_interpolation"><code class="docutils literal notranslate"><span class="pre">test_basic_interpolation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_bilinear_interpolation.test_corner_points"><code class="docutils literal notranslate"><span class="pre">test_corner_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_bilinear_interpolation.test_invalid_input_shapes"><code class="docutils literal notranslate"><span class="pre">test_invalid_input_shapes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_bilinear_interpolation.test_linear_interpolation"><code class="docutils literal notranslate"><span class="pre">test_linear_interpolation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_bilinear_interpolation.test_vectorized_operation"><code class="docutils literal notranslate"><span class="pre">test_vectorized_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_bilinear_interpolation.test_zero_area"><code class="docutils literal notranslate"><span class="pre">test_zero_area()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tests.test_image_processing">tests.test_image_processing module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_image_processing.TestOutput"><code class="docutils literal notranslate"><span class="pre">TestOutput</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_image_processing.start_test_interpolation"><code class="docutils literal notranslate"><span class="pre">start_test_interpolation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tests.test_image_processing.test_invalid_input"><code class="docutils literal notranslate"><span class="pre">test_invalid_input()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Interface (CLI)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Image interpolation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
+      <li class="breadcrumb-item active">tests package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tests.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tests-package">
+<h1>tests package<a class="headerlink" href="#tests-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-tests.test_bilinear_interpolation">
+<span id="tests-test-bilinear-interpolation-module"></span><h2>tests.test_bilinear_interpolation module<a class="headerlink" href="#module-tests.test_bilinear_interpolation" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_bilinear_interpolation.interpolation_data">
+<span class="sig-prename descclassname"><span class="pre">tests.test_bilinear_interpolation.</span></span><span class="sig-name descname"><span class="pre">interpolation_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_bilinear_interpolation.html#interpolation_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_bilinear_interpolation.interpolation_data" title="Link to this definition"></a></dt>
+<dd><p>This function generates data for test</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict that contains x_points, y_points and values in this corners.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_bilinear_interpolation.test_basic_interpolation">
+<span class="sig-prename descclassname"><span class="pre">tests.test_bilinear_interpolation.</span></span><span class="sig-name descname"><span class="pre">test_basic_interpolation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interpolation_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_bilinear_interpolation.html#test_basic_interpolation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_bilinear_interpolation.test_basic_interpolation" title="Link to this definition"></a></dt>
+<dd><p>Tests interpolation in the center of a rectangle</p>
+<p>This function tests the bilinear interpolation method by evaluating
+it at the exact center of a defined rectangular grid. It asserts that
+the result of the interpolation is close to the average of the four corner values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interpolation_data</strong> (<em>dict</em>) – <dl class="simple">
+<dt>A dictionary containing the data necessary for</dt><dd><p>bilinear interpolation. This dictionary should have
+the following keys:</p>
+</dd>
+</dl>
+<p>’x_points’ (np.ndarray): A 1D numpy array of x-coordinates.</p>
+<p>’y_points’ (np.ndarray): A 1D numpy array of y-coordinates.</p>
+<dl class="simple">
+<dt>’values’ (np.ndarray): A 2D numpy array of values defined at the grid.</dt><dd><p>values[i, j] corresponds to the value at
+(x_points[j], y_points[i]).</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>AssertionError</strong> – If the interpolated value is not close to the expected
+    value, indicating an issue with the bilinear interpolation
+    implementation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_bilinear_interpolation.test_corner_points">
+<span class="sig-prename descclassname"><span class="pre">tests.test_bilinear_interpolation.</span></span><span class="sig-name descname"><span class="pre">test_corner_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interpolation_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_bilinear_interpolation.html#test_corner_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_bilinear_interpolation.test_corner_points" title="Link to this definition"></a></dt>
+<dd><p>Tests bilinear interpolation at the corner points of a rectangle.</p>
+<p>This function verifies the bilinear interpolation implementation by evaluating
+it at each of the four corner points of the rectangular grid defined by
+the input <cite>interpolation_data</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interpolation_data</strong> (<em>dict</em>) – <dl class="simple">
+<dt>A dictionary containing the data necessary for</dt><dd><p>bilinear interpolation. This dictionary should have
+the following keys:</p>
+</dd>
+</dl>
+<p>’x_points’ (np.ndarray): A 1D numpy array of x-coordinates of the grid.</p>
+<p>’y_points’ (np.ndarray): A 1D numpy array of y-coordinates of the grid.</p>
+<dl class="simple">
+<dt>’values’ (np.ndarray): A 2D numpy array of values defined at the grid.</dt><dd><p>values[i, j] corresponds to the value at
+(x_points[j], y_points[i]).</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>AssertionError</strong> – If the interpolated value at any of the corner points
+    does not match the expected value, indicating a problem
+    with the bilinear interpolation implementation or input data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_bilinear_interpolation.test_invalid_input_shapes">
+<span class="sig-prename descclassname"><span class="pre">tests.test_bilinear_interpolation.</span></span><span class="sig-name descname"><span class="pre">test_invalid_input_shapes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_bilinear_interpolation.html#test_invalid_input_shapes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_bilinear_interpolation.test_invalid_input_shapes" title="Link to this definition"></a></dt>
+<dd><p>Tests handling of invalid input shapes for coordinate arrays.</p>
+<p>This function verifies that the bilinear_interpolation function raises an
+AssertionError when the input x_points or y_points arrays have incorrect shapes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – When x_points or y_points have incorrect shapes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_bilinear_interpolation.test_linear_interpolation">
+<span class="sig-prename descclassname"><span class="pre">tests.test_bilinear_interpolation.</span></span><span class="sig-name descname"><span class="pre">test_linear_interpolation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_bilinear_interpolation.html#test_linear_interpolation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_bilinear_interpolation.test_linear_interpolation" title="Link to this definition"></a></dt>
+<dd><p>Tests bilinear interpolation produces a linear gradient along a line.</p>
+<p>This function verifies that bilinear interpolation, when applied along a
+horizontal line (y = 0.5) within a rectangular grid, results in a linear
+gradient of values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – If the interpolated values deviate significantly
+    from the expected linear gradient.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_bilinear_interpolation.test_vectorized_operation">
+<span class="sig-prename descclassname"><span class="pre">tests.test_bilinear_interpolation.</span></span><span class="sig-name descname"><span class="pre">test_vectorized_operation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_bilinear_interpolation.html#test_vectorized_operation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_bilinear_interpolation.test_vectorized_operation" title="Link to this definition"></a></dt>
+<dd><p>Tests bilinear interpolation with vectorized inputs.</p>
+<p>This function verifies that the bilinear_interpolation function correctly
+handles vectorized inputs for x and y coordinates, producing a corresponding
+array of interpolated values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – If the interpolated values deviate significantly from
+    the expected values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_bilinear_interpolation.test_zero_area">
+<span class="sig-prename descclassname"><span class="pre">tests.test_bilinear_interpolation.</span></span><span class="sig-name descname"><span class="pre">test_zero_area</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_bilinear_interpolation.html#test_zero_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_bilinear_interpolation.test_zero_area" title="Link to this definition"></a></dt>
+<dd><p>Tests behavior when the interpolation area is zero.</p>
+<p>This function verifies that the bilinear_interpolation function raises an
+AssertionError when the input contains same points.</p>
+</dd></dl>
+
+</section>
+<section id="module-tests.test_image_processing">
+<span id="tests-test-image-processing-module"></span><h2>tests.test_image_processing module<a class="headerlink" href="#module-tests.test_image_processing" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_image_processing.TestOutput">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_image_processing.</span></span><span class="sig-name descname"><span class="pre">TestOutput</span></span><a class="reference internal" href="_modules/tests/test_image_processing.html#TestOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_image_processing.TestOutput" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tests.test_image_processing.TestOutput.pytestmark">
+<span class="sig-name descname"><span class="pre">pytestmark</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[Mark(name='usefixtures',</span> <span class="pre">args=('start_test_interpolation',),</span> <span class="pre">kwargs={})]</span></em><a class="headerlink" href="#tests.test_image_processing.TestOutput.pytestmark" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_image_processing.TestOutput.test_output">
+<span class="sig-name descname"><span class="pre">test_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_image_processing.html#TestOutput.test_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_image_processing.TestOutput.test_output" title="Link to this definition"></a></dt>
+<dd><p>Tests if the output image file is created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AssertionError</strong> – If the output image file</p></li>
+<li><p><strong>does not exist at the expected path.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_image_processing.TestOutput.test_scaled_output">
+<span class="sig-name descname"><span class="pre">test_scaled_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_image_processing.html#TestOutput.test_scaled_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_image_processing.TestOutput.test_scaled_output" title="Link to this definition"></a></dt>
+<dd><p>Tests that the output image is scaled correctly.</p>
+<p>This function verifies that the output image, stored in <cite>self.scaled</cite>, has the
+correct dimensions after scaling, by checking that the shape matches the new
+size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – If the shape of the scaled image does not match the
+    expected dimensions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_image_processing.TestOutput.test_unchanged_size">
+<span class="sig-name descname"><span class="pre">test_unchanged_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_image_processing.html#TestOutput.test_unchanged_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_image_processing.TestOutput.test_unchanged_size" title="Link to this definition"></a></dt>
+<dd><p>Tests that the image size remains unchanged after processing.</p>
+<p>This function verifies that the image processing steps do not alter the
+dimensions of the input image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – If the source and processed images differ.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_image_processing.start_test_interpolation">
+<span class="sig-prename descclassname"><span class="pre">tests.test_image_processing.</span></span><span class="sig-name descname"><span class="pre">start_test_interpolation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_image_processing.html#start_test_interpolation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_image_processing.start_test_interpolation" title="Link to this definition"></a></dt>
+<dd><p>Sets up test environment and performs image interpolation.</p>
+<p>This fixture executes before the test class. It loads an input image,
+applies the <cite>process_interpolation</cite> function to create an interpolated
+image and a scaled interpolated image.</p>
+<dl>
+<dt>Sets the following class-level attributes:</dt><dd><p>test_image (np.ndarray): The interpolated image.</p>
+<p>img_path (Path): The path to the interpolated image file.</p>
+<p>src_size (tuple): The original image size (height, width, channels).</p>
+<p>scaled (np.ndarray): The scaled interpolated image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tests.test_image_processing.test_invalid_input">
+<span class="sig-prename descclassname"><span class="pre">tests.test_image_processing.</span></span><span class="sig-name descname"><span class="pre">test_invalid_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_image_processing.html#test_invalid_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_image_processing.test_invalid_input" title="Link to this definition"></a></dt>
+<dd><p>Tests handling of invalid file paths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – When <cite>process_interpolation</cite> is called with invalid file
+    paths.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tests" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="interpolation.html" class="btn btn-neutral float-left" title="interpolation package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cli.html" class="btn btn-neutral float-right" title="Command Line Interface (CLI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shamsutdinov Amir.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

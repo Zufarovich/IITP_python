@@ -3,8 +3,37 @@ import numpy as np
 
 
 def bilinear_interpolation(
-    x_points: np.array, y_points: np.array, values: np.array, x: np.array, y: np.array
-):
+    x_points: np.ndarray,
+    y_points: np.ndarray,
+    values: np.ndarray,
+    x: np.ndarray,
+    y: np.ndarray,
+) -> np.ndarray:
+    """Bilinear interpolation for points (x,y) on a rectangular grid.
+
+    Computes weighted sum of values at four corners using bilinear
+    interpolation formula.
+
+    Args:
+        x_points: Array of shape (2,) with x-coordinates of corners.
+
+        y_points: Array of shape (2,) with y-coordinates of corners.
+
+        values: Array of values at corners.
+
+        x: X-coordinates of points to interpolate.
+
+        y: Y-coordinates of points to interpolate.
+
+    Returns:
+        np.array: Interpolated values for points (x, y).
+        The output shape matches the input shapes of x and y.
+
+    Raises:
+        AssertionError:
+            - x_points or y_points don't have shape (2,)
+            - x_points or y_points contain identical values
+    """
     assert x_points.shape == (2,), "x_points must be an array of shape (2,)"
     assert y_points.shape == (2,), "y_points must be an array of shape (2,)"
 

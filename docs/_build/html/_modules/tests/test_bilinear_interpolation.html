@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests.test_bilinear_interpolation &mdash; Image interpolation 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Image interpolation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Command Line Interface (CLI)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Image interpolation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">tests.test_bilinear_interpolation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tests.test_bilinear_interpolation</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">interpolation.bilinear_interp</span><span class="w"> </span><span class="kn">import</span> <span class="n">bilinear_interpolation</span>
+
+
+<div class="viewcode-block" id="interpolation_data">
+<a class="viewcode-back" href="../../tests.html#tests.test_bilinear_interpolation.interpolation_data">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">interpolation_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This function generates data for test</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">       Dict that contains x_points, y_points and values in this corners.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;x_points&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+        <span class="s2">&quot;y_points&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]]),</span>
+    <span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_basic_interpolation">
+<a class="viewcode-back" href="../../tests.html#tests.test_bilinear_interpolation.test_basic_interpolation">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_basic_interpolation</span><span class="p">(</span><span class="n">interpolation_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests interpolation in the center of a rectangle</span>
+
+<span class="sd">    This function tests the bilinear interpolation method by evaluating</span>
+<span class="sd">    it at the exact center of a defined rectangular grid. It asserts that</span>
+<span class="sd">    the result of the interpolation is close to the average of the four corner values.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        interpolation_data (dict): A dictionary containing the data necessary for</span>
+<span class="sd">                                    bilinear interpolation. This dictionary should have</span>
+<span class="sd">                                    the following keys:</span>
+
+<span class="sd">            &#39;x_points&#39; (np.ndarray): A 1D numpy array of x-coordinates.</span>
+
+<span class="sd">            &#39;y_points&#39; (np.ndarray): A 1D numpy array of y-coordinates.</span>
+
+<span class="sd">            &#39;values&#39; (np.ndarray): A 2D numpy array of values defined at the grid.</span>
+<span class="sd">                                    values[i, j] corresponds to the value at</span>
+<span class="sd">                                    (x_points[j], y_points[i]).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the interpolated value is not close to the expected</span>
+<span class="sd">                        value, indicating an issue with the bilinear interpolation</span>
+<span class="sd">                        implementation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">bilinear_interpolation</span><span class="p">(</span>
+        <span class="n">interpolation_data</span><span class="p">[</span><span class="s2">&quot;x_points&quot;</span><span class="p">],</span>
+        <span class="n">interpolation_data</span><span class="p">[</span><span class="s2">&quot;y_points&quot;</span><span class="p">],</span>
+        <span class="n">interpolation_data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">],</span>
+        <span class="mf">0.5</span><span class="p">,</span>
+        <span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">interpolation_data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">])</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="test_corner_points">
+<a class="viewcode-back" href="../../tests.html#tests.test_bilinear_interpolation.test_corner_points">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_corner_points</span><span class="p">(</span><span class="n">interpolation_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests bilinear interpolation at the corner points of a rectangle.</span>
+
+<span class="sd">    This function verifies the bilinear interpolation implementation by evaluating</span>
+<span class="sd">    it at each of the four corner points of the rectangular grid defined by</span>
+<span class="sd">    the input `interpolation_data`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        interpolation_data (dict): A dictionary containing the data necessary for</span>
+<span class="sd">                                    bilinear interpolation. This dictionary should have</span>
+<span class="sd">                                    the following keys:</span>
+
+<span class="sd">            &#39;x_points&#39; (np.ndarray): A 1D numpy array of x-coordinates of the grid.</span>
+
+<span class="sd">            &#39;y_points&#39; (np.ndarray): A 1D numpy array of y-coordinates of the grid.</span>
+
+<span class="sd">            &#39;values&#39; (np.ndarray): A 2D numpy array of values defined at the grid.</span>
+<span class="sd">                                    values[i, j] corresponds to the value at</span>
+<span class="sd">                                    (x_points[j], y_points[i]).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the interpolated value at any of the corner points</span>
+<span class="sd">                        does not match the expected value, indicating a problem</span>
+<span class="sd">                        with the bilinear interpolation implementation or input data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">interpolation_data</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">bilinear_interpolation</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x_points&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y_points&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="o">==</span> <span class="n">interpolation_data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">bilinear_interpolation</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x_points&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y_points&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="o">==</span> <span class="n">interpolation_data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">bilinear_interpolation</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x_points&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y_points&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="o">==</span> <span class="n">interpolation_data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">bilinear_interpolation</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x_points&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y_points&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="o">==</span> <span class="n">interpolation_data</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="test_linear_interpolation">
+<a class="viewcode-back" href="../../tests.html#tests.test_bilinear_interpolation.test_linear_interpolation">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_linear_interpolation</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests bilinear interpolation produces a linear gradient along a line.</span>
+
+<span class="sd">    This function verifies that bilinear interpolation, when applied along a</span>
+<span class="sd">    horizontal line (y = 0.5) within a rectangular grid, results in a linear</span>
+<span class="sd">    gradient of values.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the interpolated values deviate significantly</span>
+<span class="sd">                           from the expected linear gradient.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">y_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">]])</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">bilinear_interpolation</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="n">y_points</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="test_vectorized_operation">
+<a class="viewcode-back" href="../../tests.html#tests.test_bilinear_interpolation.test_vectorized_operation">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_vectorized_operation</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests bilinear interpolation with vectorized inputs.</span>
+
+<span class="sd">    This function verifies that the bilinear_interpolation function correctly</span>
+<span class="sd">    handles vectorized inputs for x and y coordinates, producing a corresponding</span>
+<span class="sd">    array of interpolated values.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the interpolated values deviate significantly from</span>
+<span class="sd">                        the expected values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">y_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">bilinear_interpolation</span><span class="p">(</span><span class="n">x_points</span><span class="p">,</span> <span class="n">y_points</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="test_zero_area">
+<a class="viewcode-back" href="../../tests.html#tests.test_bilinear_interpolation.test_zero_area">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_zero_area</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests behavior when the interpolation area is zero.</span>
+
+<span class="sd">    This function verifies that the bilinear_interpolation function raises an</span>
+<span class="sd">    AssertionError when the input contains same points.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span>
+        <span class="ne">AssertionError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;x_points and y_points should contain different points&quot;</span>
+    <span class="p">):</span>
+        <span class="n">bilinear_interpolation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="test_invalid_input_shapes">
+<a class="viewcode-back" href="../../tests.html#tests.test_bilinear_interpolation.test_invalid_input_shapes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_invalid_input_shapes</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests handling of invalid input shapes for coordinate arrays.</span>
+
+<span class="sd">    This function verifies that the bilinear_interpolation function raises an</span>
+<span class="sd">    AssertionError when the input x_points or y_points arrays have incorrect shapes </span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: When x_points or y_points have incorrect shapes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">excinfo</span><span class="p">:</span>
+        <span class="n">bilinear_interpolation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="s2">&quot;x_points must be an array of shape (2,)&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">excinfo</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">)</span> <span class="k">as</span> <span class="n">excinfo</span><span class="p">:</span>
+        <span class="n">bilinear_interpolation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="s2">&quot;y_points must be an array of shape (2,)&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">excinfo</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Shamsutdinov Amir.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

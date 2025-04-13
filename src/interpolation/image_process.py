@@ -7,7 +7,24 @@ import numpy as np
 from interpolation.bilinear_interp import bilinear_interpolation
 
 
-def process_interpolation(source: Path, output: Path, width: int, height: int):
+def process_interpolation(
+    source: "Path", output: "Path", width: int, height: int
+) -> "Path":
+    """Resize an image using bilinear interpolation and save the result.
+
+    Args:
+        source: Path to the source image file.
+        output: Path where the resized image will be saved.
+        width: Target width in pixels for the output image.
+        height: Target height in pixels for the output image.
+
+    Returns:
+        Path to the saved output image.
+
+    Raises:
+        ValueError: If the source image cannot be loaded or is invalid.
+        IOError: If the output file cannot be written.
+    """
     img = cv2.imread(source)
     if img is None:
         raise ValueError(click.style(f"Failed to load image: {source}", fg="red"))
