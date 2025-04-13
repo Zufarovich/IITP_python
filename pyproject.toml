@@ -24,6 +24,13 @@ interpolation = "interpolation.console:cli"
 pytest = "^8.3.5"
 pytest-cov = "^6.0.0"
 
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^8.2.3"
+myst-parser = "^4.0.1"
+sphinx-click = "^6.0.0"
+sphinx-rtd-theme = "^3.0.2"
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
