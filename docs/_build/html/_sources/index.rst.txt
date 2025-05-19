@@ -11,4 +11,6 @@ Image interpolation documentation
    :caption: Contents:
 
    modules
+   methods.md
+   performance.md
    cli

@@ -7,7 +7,7 @@ Submodules
 tests.test\_bilinear\_interpolation module
 ------------------------------------------
 
-.. automodule:: tests.test_bilinear_interpolation
+.. automodule:: src.tests.test_bilinear_interpolation
    :members:
    :show-inheritance:
    :undoc-members:
@@ -15,7 +15,7 @@ tests.test\_bilinear\_interpolation module
 tests.test\_image\_processing module
 ------------------------------------
 
-.. automodule:: tests.test_image_processing
+.. automodule:: src.tests.test_image_processing
    :members:
    :show-inheritance:
    :undoc-members:
@@ -23,7 +23,7 @@ tests.test\_image\_processing module
 Module contents
 ---------------
 
-.. automodule:: tests
+.. automodule:: src.tests
    :members:
    :show-inheritance:
    :undoc-members:

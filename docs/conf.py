@@ -19,7 +19,8 @@ release = '0.1.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser', 
+extensions = ['myst_parser',
+              'myst_parser', 
             'sphinx_click',
             'sphinx_rtd_theme',
             'sphinx.ext.viewcode',
@@ -32,6 +33,16 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 autodoc_type_aliases = {
     'Path': 'pathlib.Path',
 }
+
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown'
+}
+
+myst_enable_extensions = [
+    "amsmath",      # Для окружений LaTeX типа align, equation и т.д.
+    "dollarmath",   # Для $...$ (inline) и $$...$$ (display) математики
+]
 
 
 # -- Options for HTML output -------------------------------------------------
