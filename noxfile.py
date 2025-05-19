@@ -5,7 +5,7 @@ import pytest
 from nox import Session
 
 package = "interpolation"
-nox.options.sessions = ["ruff_check", "formatter", "tests"]
+nox.options.sessions = ["ruff_check", "formatter", "tests", "documentation"]
 locations = ["src/interpolation"]
 
 @nox_poetry.session(python="3.12")
@@ -26,3 +26,16 @@ def tests(session: Session) -> None:
     session.install(".")
     session.install("pytest", "pytest-cov")
     session.run("pytest", "--cov")
+    
+@nox_poetry.session(python="3.12", reuse_venv=True)
+def documentation(session: Session) -> None:
+    """Run documentation."""
+    session.install(".") 
+    
+    session.install(
+        "sphinx", 
+        "sphinx_rtd_theme", 
+        "sphinx_click",
+        "myst_parser"
+    )
+    session.run("sphinx-build", "-b", "html", "docs", "docs/_build/html")
