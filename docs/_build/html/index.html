@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="License" href="license.html" /> 
+    <link rel="next" title="Reference page" href="reference.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,6 +42,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
@@ -69,34 +71,83 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <!-- .. Image interpolation documentation master file, created by
-   sphinx-quickstart on Wed Apr  2 22:14:33 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive. -->
-<section class="tex2jax_ignore mathjax_ignore" id="image-interpolation-documentation">
+  <section class="tex2jax_ignore mathjax_ignore" id="image-interpolation-documentation">
 <h1>Image interpolation documentation<a class="headerlink" href="#image-interpolation-documentation" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>This page consists of modules from code, methods presented there and also description of Command-Line Interface(CLI)</p>
-<section id="contents">
-<h2>Contents:<a class="headerlink" href="#contents" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="modules.html"><span class="std std-doc">Modules</span></a></p></li>
-<li><p><a class="reference internal" href="methods.html"><span class="std std-doc">Methods</span></a></p></li>
-<li><p><a class="reference internal" href="cli.html"><span class="std std-doc">Command-Line Interface</span></a></p></li>
-</ul>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>To install Image interpolation,
+run this command in your terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">   $ </span>poetry<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>Run the interpolation CLI with:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>interpolation
+</pre></div>
+</div>
+<p>To see available commands, use:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>interpolation<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>Select the required command inside <code class="docutils literal notranslate"><span class="pre">cli/</span></code>.</p>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>To perform bilinear interpolation on an image, use the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>interpolation<span class="w"> </span>image-interpolate<span class="w"> </span>lantern.jpeg<span class="w"> </span>lantern1.jpeg<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span>-f
+</pre></div>
+</div>
+<section id="explanation">
+<h3>Explanation:<a class="headerlink" href="#explanation" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span></code></strong></p></td>
+<td><p>Runs a script defined in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> using Poetry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">interpolation</span></code></strong></p></td>
+<td><p>The main command for running interpolation-related tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">image-interpolate</span></code></strong></p></td>
+<td><p>A specific subcommand for performing bilinear image interpolation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">image.jpeg</span></code></strong></p></td>
+<td><p>The input image file that will be resized.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">interpolated_image.jpeg</span></code></strong></p></td>
+<td><p>The output file where the interpolated image will be saved.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">500</span></code></strong></p></td>
+<td><p>The target width (in pixels) for the output image.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">1000</span></code></strong></p></td>
+<td><p>The target height (in pixels) for the output image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">-f</span></code></strong></p></td>
+<td><p>Forces overwriting of the output file if it already exists.</p></td>
+</tr>
+</tbody>
+</table>
+<p>This command resizes <code class="docutils literal notranslate"><span class="pre">image.jpeg</span></code> to <code class="docutils literal notranslate"><span class="pre">500x1000</span></code> pixels using bilinear interpolation and saves the result as <code class="docutils literal notranslate"><span class="pre">interpolated_image.jpeg</span></code>.</p>
+</section>
+<section id="example-of-interpolation">
+<h3>Example of interpolation<a class="headerlink" href="#example-of-interpolation" title="Link to this heading"></a></h3>
+<p><img alt="Result" src="_images/combined.png" /></p>
+</section>
 </section>
 <section id="performance">
 <h2>Performance<a class="headerlink" href="#performance" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="performance.html"><span class="std std-doc">Performance</span></a></p></li>
 </ul>
-<p>`` {eval-rst}
-.. plot:: ../plots/performance.py
-:show-source-link:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -104,7 +155,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="reference.html" class="btn btn-neutral float-right" title="Reference page" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
